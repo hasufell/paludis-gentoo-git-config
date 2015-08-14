@@ -2,10 +2,7 @@
 
 source "${PALUDIS_EBUILD_DIR}/echo_functions.bash"
 source "${PALUDIS_EBUILD_DIR}/die_functions.bash"
-
-PORTDIR="/usr/portage"
-
-[[ -z ${PORTDIR} || "$(dirname ${PORTDIR})" == "/" ]] && die "PORTDIR empty or pointing to root!"
+source "/etc/paludis/hooks/set_portdir.bash"
 
 
 cd "${PORTDIR}"/metadata || die "could not cd into '${PORTDIR}/metadata'!"
