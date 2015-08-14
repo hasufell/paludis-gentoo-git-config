@@ -1,16 +1,12 @@
 #!/bin/bash
 
 source "${PALUDIS_EBUILD_DIR}/echo_functions.bash"
+source "${PALUDIS_EBUILD_DIR}/die_functions.bash"
 
 PORTDIR="/usr/portage"
 
 [[ -z ${PORTDIR} || "$(dirname ${PORTDIR})" == "/" ]] && die "PORTDIR empty or pointing to root!"
 
-
-die() {
-	eerror "${1}"
-	exit 1
-}
 
 cd "${PORTDIR}"/metadata || die "could not cd into '${PORTDIR}/metadata'!"
 if [[ -e glsa ]] ; then
