@@ -2,7 +2,7 @@
 
 # set PORTDIR
 
-PORTDIR="$(cave print-repository-metadata --raw-name location gentoo)"
+PORTDIR="$(${CAVE} print-repository-metadata --raw-name location gentoo)"
 PORTDIR=${PORTDIR#location=}
 
 if [[ -z ${PORTDIR} || "$(dirname ${PORTDIR})" == "/" ]] ; then
