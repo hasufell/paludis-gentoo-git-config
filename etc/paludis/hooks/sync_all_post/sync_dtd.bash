@@ -1,17 +1,13 @@
 #!/bin/bash
 
 source "${PALUDIS_EBUILD_DIR}/echo_functions.bash"
-source "${PALUDIS_EBUILD_DIR}/die_functions.bash"
 source "/etc/paludis/hooks/set_portdir.bash"
 
-
-cd "${PORTDIR}"/metadata || die "could not cd into '${PORTDIR}/metadata'!"
-if [[ -e dtd ]] ; then
-	einfo "dtd dir already exists, updating..."
-	cd dtd || die "could not cd into 'dtd'!"
-	git pull --ff || die "could not pull updates!"
+DTDDIR=${PORTDIR}/metadata/dtd
+ebegin "Updating DTDs"
+if [[ -e ${DTDDIR} ]]; then
+	git -C "${DTDDIR}" pull --ff
 else
-	einfo "dtd directory does not exist, cloning..."
-	git clone https://anongit.gentoo.org/git/data/dtd.git || die "could not clone repository!"
+	git clone https://anongit.gentoo.org/git/data/dtd.git "${DTDDIR}"
 fi
-
+eend "$?"

@@ -1,10 +1,8 @@
 #!/bin/bash
 
 source "${PALUDIS_EBUILD_DIR}/echo_functions.bash"
-source "${PALUDIS_EBUILD_DIR}/die_functions.bash"
 source "/etc/paludis/hooks/set_portdir.bash"
 
-
-cd "${PORTDIR}"/metadata || die "could not cd into '${PORTDIR}/metadata'!"
-[[ -e "${PORTDIR}"/metadata/herds.xml ]] && { rm "${PORTDIR}"/metadata/herds.xml || die "failed to rm herds.xml!" ;}
-wget https://gitweb.gentoo.org/data/api.git/plain/files/packages/herds.xml || die "failed to wget herds.xml"
+ebegin "Updating herds.xml"
+wget -O "${PORTDIR}"/metadata/herds.xml https://api.gentoo.org/packages/herds.xml
+eend $?

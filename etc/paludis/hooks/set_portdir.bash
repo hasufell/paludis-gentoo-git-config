@@ -3,7 +3,7 @@
 # set PORTDIR
 
 PORTDIR="$(cave print-repository-metadata --raw-name location gentoo)"
-PORTDIR="${PORTDIR#location=}"
+PORTDIR=${PORTDIR#location=}
 
 if [[ -z ${PORTDIR} || "$(dirname ${PORTDIR})" == "/" ]] ; then
 	die "PORTDIR empty or pointing to root!"
