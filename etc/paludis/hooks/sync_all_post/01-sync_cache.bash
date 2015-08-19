@@ -6,7 +6,7 @@ source "/etc/paludis/hooks/util_functions.bash"
 
 # You may change this to only update cache of specific repositories.
 # Should at least include 'gentoo'. Default is all repositories.
-repository_list=( $(print_ebuild_repositories) )
+repository_list=( $(${CAVE} print-repositories --format e) )
 
 # Number of jobs for egencache, default is number or processors.
 egencache_jobnum="$(nproc)"
