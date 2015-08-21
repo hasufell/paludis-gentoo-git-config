@@ -9,15 +9,7 @@ ebegin "Updating news items"
 if [[ -e ${NEWSDIR} ]]; then
 	git -C "${NEWSDIR}" pull -q --ff
 else
-	git clone -q https://anongit.gentoo.org/git/proj/gentoo-news.git "${NEWSDIR}"
+	git clone -q https://anongit.gentoo.org/git/data/gentoo-news.git "${NEWSDIR}"
 fi
-eend_die $?
-
-ebegin "Cleaning news git repo"
-git -C "${NEWSDIR}" clean -fdxq
-eend_die $?
-
-ebegin "Copying news to base directory"
-cp -a "${NEWSDIR}"/*/* "${NEWSDIR}"
-eend $?
+eend $? "Try to remove ${PORTDIR}/metadata/news"
 
