@@ -7,10 +7,6 @@ if [[ ${TARGET} == gentoo ]] ; then
 	# Number of jobs for egencache, default is number or processors.
 	egencache_jobnum="$(nproc)"
 
-	ebegin "Fetching pre-generated metadata cache for gentoo repository"
-	rsync -aq rsync://rsync.gentoo.org/gentoo-portage/metadata/md5-cache/ "${PORTDIR}"/metadata/md5-cache/
-	eend $?
-
 	ebegin "Updating metadata cache for repository ${TARGET}"
 	egencache --jobs=${egencache_jobnum} --repo=${TARGET} --update --update-use-local-desc
 	eend $?
