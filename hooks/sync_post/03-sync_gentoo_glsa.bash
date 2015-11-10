@@ -7,7 +7,7 @@ if [[ ${TARGET} == gentoo ]] ; then
 	GLSADIR=${PORTDIR}/metadata/glsa
 	ebegin "Updating GLSAs"
 	if [[ -e ${GLSADIR} ]]; then
-		git -C "${GLSADIR}" pull -q --ff
+		git -C "${GLSADIR}" pull -q --ff-only
 	else
 		git clone -q https://anongit.gentoo.org/git/data/glsa.git "${GLSADIR}"
 	fi

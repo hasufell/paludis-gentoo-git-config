@@ -7,7 +7,7 @@ if [[ ${TARGET} == gentoo ]] ; then
 	DTDDIR=${PORTDIR}/metadata/dtd
 	ebegin "Updating DTDs"
 	if [[ -e ${DTDDIR} ]]; then
-		git -C "${DTDDIR}" pull -q --ff
+		git -C "${DTDDIR}" pull -q --ff-only
 	else
 		git clone -q https://anongit.gentoo.org/git/data/dtd.git "${DTDDIR}"
 	fi

@@ -7,7 +7,7 @@ if [[ ${TARGET} == gentoo ]] ; then
 	NEWSDIR="${PORTDIR}"/metadata/news
 	ebegin "Updating news items"
 	if [[ -e ${NEWSDIR} ]]; then
-		git -C "${NEWSDIR}" pull -q --ff
+		git -C "${NEWSDIR}" pull -q --ff-only
 	else
 		git clone -q https://anongit.gentoo.org/git/data/gentoo-news.git "${NEWSDIR}"
 	fi
