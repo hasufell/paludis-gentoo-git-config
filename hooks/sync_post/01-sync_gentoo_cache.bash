@@ -4,7 +4,7 @@ source "${PALUDIS_EBUILD_DIR}/echo_functions.bash"
 source "/etc/paludis/hooks/set_portdir.bash"
 
 if [[ ${TARGET} == gentoo ]] ; then
-	# Number of jobs for egencache, default is number or processors.
+	# Number of jobs for egencache, default is number of processors.
 	egencache_jobnum="$(nproc)"
 
 	ebegin "Updating metadata cache for repository ${TARGET}"
